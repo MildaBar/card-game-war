@@ -12,3 +12,15 @@ If the two cards played are of equal value, then there is a "war". Both players 
 If a player runs out of cards during a war, that player immediately loses.
 
 REQUIREMENTS OF THE PROGRAM:
+
+1. There should be two players participating the game.
+2. The deck needs to be randomly initialized at the beggining of each game. Each player gets 26 cards.
+3. Each player should "open" and "show" a card.
+4. After each round, the program should update how many cards each player has.
+5. The program should compare cards and act on what it shows:
+   - if the cards are the same, start a "war"
+   - if the cards are different, check whitch player has the higher card and gets the cards
+6. The program should count the cards:
+   - if on of the players has all cards, that player wins
+   - if on of the player has no cards while playing "war", that player immediately loses.
+7. If players wants to quit the program in the middle of the game, one of the player should write "done".
