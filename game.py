@@ -11,7 +11,9 @@ class Game:
         self.play()
 
     def play(self):
-        print("Hello to a WAR card game. LET'S START THE GAME! Player one starts the game!")
+        print(
+            "Hello to a WAR card game. LET'S START THE GAME! Player one starts the game!"
+        )
         while len(self.player_one_choice) > 0 and len(self.player_two_choice) > 0:
             self.round_num += 1
             print(f"ROUND {self.round_num}")
@@ -19,7 +21,7 @@ class Game:
             # check if it's time to ask the user if they want to finish the game
             if self.round_num > 1:
                 game_end = input("Do you want to finish the game? ")
-                if game_end.lower() == 'yes':
+                if game_end.lower() == "yes":
                     break
 
             player_one_turn = players_card(self.player_one_choice.cards)
@@ -42,16 +44,14 @@ class Game:
             if len(self.player_one_choice) == 0 or len(self.player_two_choice) == 0:
                 break
 
-            print(f"Player 1 has {len(self.player_one_choice.cards)} and Player 2 has {len(self.player_two_choice.cards)}")
+            print(
+                f"Player 1 has {len(self.player_one_choice.cards)} and Player 2 has {len(self.player_two_choice.cards)}"
+            )
 
         if len(self.player_one_choice) == 0:
             print("PLAYER 2 WINS!")
         elif len(self.player_two_choice) == 0:
             print("PLAYER 1 WINS!")
-
-        
-
-
 
 
 def players_card(deck_of_cards):
