@@ -8,7 +8,6 @@ class Game:
         self.player_one_choice = AddCards(self.deck.player_one)
         self.player_two_choice = AddCards(self.deck.player_two)
         self.round_num = 0
-        self.play()
 
     def play(self):
         print(
@@ -17,13 +16,31 @@ class Game:
         # print round number
         while len(self.player_one_choice) > 0 and len(self.player_two_choice) > 0:
             self.round_num += 1
-            print(f"ROUND {self.round_num}")
-
             # check if it's time to ask the user if they want to finish the game
             if self.round_num > 1:
                 game_end = input("Do you want to finish the game? ")
                 if game_end.lower() == "yes":
-                    break
+                    if len(self.player_one_choice.cards) > len(
+                        self.player_two_choice.cards
+                    ):
+                        print(
+                            "\n"
+                            + f"At this point of the game the winner is PLAYER 1 with {len(self.player_one_choice.cards)} cards!"
+                        )
+                        break
+                    elif len(self.player_two_choice.cards) > len(
+                        self.player_one_choice.cards
+                    ):
+                        print(
+                            "\n"
+                            + f"At this point of the game the winner is PLAYER 2 with {len(self.player_two_choice.cards)} cards!"
+                        )
+                        break
+                    else:
+                        print("\n" + "At this point of the game IT'S A TIE!")
+                        break
+
+            print("\n" + f"ROUND {self.round_num}")
 
             player_one_turn = players_card(self.player_one_choice.cards)
             player_two_turn = players_card(self.player_two_choice.cards)
@@ -70,12 +87,14 @@ def card_value(card):
 def war(player_one_choice, player_two_choice):
     print("It's a tie! Time for WAR!")
     war_cards = []
-    for i in range(3):
+    for i in range(2):
+        # check if either player has run out of cards
         if len(player_one_choice.cards) == 0:
             return "Player Two wins!"
         elif len(player_two_choice.cards) == 0:
             return "Player One wins!"
         else:
+            # In each iteration of the loop, this block of code removes one card from each player's deck (player_one_choice and player_two_choice) and adds them to the war_cards list.
             war_cards.append(player_one_choice.remove_one())
             war_cards.append(player_two_choice.remove_one())
 
