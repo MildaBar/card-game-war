@@ -14,6 +14,7 @@ class Game:
         print(
             "Hello to a WAR card game. LET'S START THE GAME! Player one starts the game!"
         )
+        # print round number
         while len(self.player_one_choice) > 0 and len(self.player_two_choice) > 0:
             self.round_num += 1
             print(f"ROUND {self.round_num}")
@@ -41,27 +42,31 @@ class Game:
             else:
                 war(self.player_one_choice, self.player_two_choice)
 
-            if len(self.player_one_choice) == 0 or len(self.player_two_choice) == 0:
+            # winner of the game
+            if len(self.player_one_choice) == 0:
+                print("PLAYER 2 WINS!")
+                break
+            elif len(self.player_two_choice) == 0:
+                print("PLAYER 1 WINS!")
                 break
 
+            # print how many cards players have
             print(
                 f"Player 1 has {len(self.player_one_choice.cards)} and Player 2 has {len(self.player_two_choice.cards)}"
             )
 
-        if len(self.player_one_choice) == 0:
-            print("PLAYER 2 WINS!")
-        elif len(self.player_two_choice) == 0:
-            print("PLAYER 1 WINS!")
 
-
+# random card of the deck
 def players_card(deck_of_cards):
     return random.choice(deck_of_cards)
 
 
+# card value form the class
 def card_value(card):
     return card.value
 
 
+# war game
 def war(player_one_choice, player_two_choice):
     print("It's a tie! Time for WAR!")
     war_cards = []
