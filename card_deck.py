@@ -43,12 +43,16 @@ class AddCards:
         else:
             self.cards.append(new_cards)
 
+    # remove the first element of the cards list
     def remove_one(self):
         return self.cards.pop(0)
 
+    # add new cards to the cards list
     def add_cards(self, new_cards):
+        # if the argument passed to the method is a list, it extends the cards list with the elements of the new list
         if isinstance(new_cards, list):
             self.cards.extend(new_cards)
+        # append the new card to the cards list
         else:
             self.cards.append(new_cards)
 
