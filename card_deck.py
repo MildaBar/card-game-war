@@ -61,3 +61,8 @@ class AddCards:
 
     def __str__(self):
         return f"{len(self.cards)} cards"
+
+
+# card value form the class
+def card_value(card):
+    return card.value
